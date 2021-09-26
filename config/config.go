@@ -31,7 +31,7 @@ func MySQL() (*sql.DB, error) {
 
 	var dsn string
 
-	if username == "" {
+	if host == "" {
 		dsn = fmt.Sprintf("%v:%v@/%v", localUsername, localPassword, localDatabase)
 	} else {
 		dsn = fmt.Sprintf("%v:%v@%v/%v", username, password, host, database)
