@@ -26,7 +26,7 @@ func GetAll(ctx context.Context) ([]models.Biodata_diri, error) {
 		log.Fatal("Cant connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("SELECT * FROM %v Order By Biodata_diri_id DESC", table)
+	queryText := fmt.Sprintf("SELECT * FROM %v Order By biodata_diri_id DESC", table)
 
 	rowQuery, err := db.QueryContext(ctx, queryText)
 
