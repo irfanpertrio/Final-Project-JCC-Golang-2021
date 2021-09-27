@@ -1,4 +1,4 @@
-package Pesanan
+package pesanan
 
 import (
 	"api-mysql/config"
@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	table          = "Pesanan"
+	table          = "pesanan"
 	layoutDateTime = "2006-01-02 15:04:05"
 )
 
@@ -26,7 +26,7 @@ func GetAll(ctx context.Context) ([]models.Pesanan, error) {
 		log.Fatal("Cant connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("SELECT * FROM %v Order By Pesanan_id DESC", table)
+	queryText := fmt.Sprintf("SELECT * FROM %v Order By id_barang DESC", table)
 
 	rowQuery, err := db.QueryContext(ctx, queryText)
 
@@ -82,7 +82,7 @@ func Update(ctx context.Context, Pesanan models.Pesanan, id string) error {
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("UPDATE %v set id_barang ='%d', jumlah_barang ='%d', alamat_id ='%d', keranjang_id ='%d' where pesanan_id = %s",
+	queryText := fmt.Sprintf("UPDATE %v set id_barang ='%d', jumlah_barang ='%d', alamat_id ='%d', keranjang_id ='%d' where id_barang = %s",
 		table,
 		Pesanan.Id_barang,
 		Pesanan.Jumlah_barang,
@@ -110,7 +110,7 @@ func Delete(ctx context.Context, id string) error {
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("DELETE FROM %v where pesanan_id = %s", table, id)
+	queryText := fmt.Sprintf("DELETE FROM %v where id_barang = %s", table, id)
 
 	s, err := db.ExecContext(ctx, queryText)
 

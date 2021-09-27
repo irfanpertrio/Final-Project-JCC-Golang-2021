@@ -1,4 +1,4 @@
-package Users
+package users
 
 import (
 	"api-mysql/config"
@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	table          = "Users"
+	table          = "users"
 	layoutDateTime = "2006-01-02 15:04:05"
 )
 
@@ -26,7 +26,7 @@ func GetAll(ctx context.Context) ([]models.Users, error) {
 		log.Fatal("Cant connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("SELECT * FROM %v Order By Users_id DESC", table)
+	queryText := fmt.Sprintf("SELECT * FROM %v Order By users_id DESC", table)
 
 	rowQuery, err := db.QueryContext(ctx, queryText)
 
@@ -110,7 +110,7 @@ func Delete(ctx context.Context, id string) error {
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("DELETE FROM %v where Users_id = %s", table, id)
+	queryText := fmt.Sprintf("DELETE FROM %v where users_id = %s", table, id)
 
 	s, err := db.ExecContext(ctx, queryText)
 

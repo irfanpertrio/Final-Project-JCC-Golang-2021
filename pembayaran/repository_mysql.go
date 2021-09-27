@@ -1,4 +1,4 @@
-package Pembayaran
+package pembayaran
 
 import (
 	"api-mysql/config"
@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	table          = "Pembayaran"
+	table          = "pembayaran"
 	layoutDateTime = "2006-01-02 15:04:05"
 )
 
@@ -45,7 +45,6 @@ func GetAll(ctx context.Context) ([]models.Pembayaran, error) {
 			return nil, err
 		}
 
-
 		Pembayarans = append(Pembayarans, Pembayaran)
 	}
 
@@ -61,11 +60,11 @@ func Insert(ctx context.Context, Pembayaran models.Pembayaran) error {
 	}
 
 	queryText := fmt.Sprintf("INSERT INTO %v (pembayaran_id, users_id, kartu_kredit, kredivo, debit) values('%v','%v','%v','%v','%v')", table,
-	Pembayaran.Pembayaran_id,
-	Pembayaran.Users_id,
-	Pembayaran.Kartu_kredit,
-	Pembayaran.Kredivo,
-	Pembayaran.Debit,
+		Pembayaran.Pembayaran_id,
+		Pembayaran.Users_id,
+		Pembayaran.Kartu_kredit,
+		Pembayaran.Kredivo,
+		Pembayaran.Debit,
 	)
 
 	_, err = db.ExecContext(ctx, queryText)
@@ -85,7 +84,7 @@ func Update(ctx context.Context, Pembayaran models.Pembayaran, id string) error 
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("UPDATE %v set user_id ='%d', kartu_kredit ='%d', kredivo ='%d', debit ='%d' where pembayaran_id = %s", 
+	queryText := fmt.Sprintf("UPDATE %v set user_id ='%d', kartu_kredit ='%d', kredivo ='%d', debit ='%d' where pembayaran_id = %s",
 		table,
 		Pembayaran.Users_id,
 		Pembayaran.Kartu_kredit,

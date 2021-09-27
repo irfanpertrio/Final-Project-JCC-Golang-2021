@@ -2,7 +2,6 @@ package main
 
 import (
 	"api-mysql/biodata_diri"
-	Biodata_diri "api-mysql/biodata_diri"
 	"api-mysql/models"
 	"api-mysql/utils"
 	"context"
@@ -91,7 +90,6 @@ func GetBiodata_diri(w http.ResponseWriter, _ *http.Request, _ httprouter.Params
 	defer cancel()
 
 	Biodata_diris, err := biodata_diri.GetAll(ctx)
-
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -118,7 +116,7 @@ func PostBiodata_diri(w http.ResponseWriter, r *http.Request, _ httprouter.Param
 		return
 	}
 
-	if err := Biodata_diri.Insert(ctx, bio); err != nil {
+	if err := biodata_diri.Insert(ctx, bio); err != nil {
 		utils.ResponseJSON(w, err, http.StatusInternalServerError)
 		return
 	}
@@ -150,7 +148,7 @@ func UpdateBiodata_diri(w http.ResponseWriter, r *http.Request, ps httprouter.Pa
 
 	var idBiodata_diri = ps.ByName("id")
 
-	if err := Biodata_diri.Update(ctx, bio, idBiodata_diri); err != nil {
+	if err := biodata_diri.Update(ctx, bio, idBiodata_diri); err != nil {
 		utils.ResponseJSON(w, err, http.StatusInternalServerError)
 		return
 	}
@@ -170,7 +168,7 @@ func DeleteBiodata_diri(w http.ResponseWriter, _ *http.Request, ps httprouter.Pa
 
 	var idBiodata_diri = ps.ByName("id")
 
-	if err := Biodata_diri.Delete(ctx, idBiodata_diri); err != nil {
+	if err := biodata_diri.Delete(ctx, idBiodata_diri); err != nil {
 		kesalahan := map[string]string{
 			"error": fmt.Sprintf("%v", err),
 		}
@@ -184,5 +182,3 @@ func DeleteBiodata_diri(w http.ResponseWriter, _ *http.Request, ps httprouter.Pa
 
 	utils.ResponseJSON(w, res, http.StatusOK)
 }
-
-////////////////////////////////////////////////////////////////////

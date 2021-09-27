@@ -1,4 +1,4 @@
-package Keranjang
+package keranjang
 
 import (
 	"api-mysql/config"
@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	table          = "Keranjang"
+	table          = "keranjang"
 	layoutDateTime = "2006-01-02 15:04:05"
 )
 
@@ -26,7 +26,7 @@ func GetAll(ctx context.Context) ([]models.Keranjang, error) {
 		log.Fatal("Cant connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("SELECT * FROM %v Order By Keranjang_id DESC", table)
+	queryText := fmt.Sprintf("SELECT * FROM %v Order By keranjang_id DESC", table)
 
 	rowQuery, err := db.QueryContext(ctx, queryText)
 
