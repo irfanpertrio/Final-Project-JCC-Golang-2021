@@ -90,7 +90,7 @@ func Update(ctx context.Context, Biodata_diri models.Biodata_diri, id string) er
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("UPDATE %v set biodata_id ='%d', nama ='%s', tanggal_lahir ='%s', jenis_kelamin ='%s', email ='%s', no_hp ='%d', profil_pic ='%s', users_id ='%d' where biodata_diri_id = %s",
+	queryText := fmt.Sprintf("UPDATE %v set biodata_id ='%d', nama ='%s', tanggal_lahir ='%s', jenis_kelamin ='%s', email ='%s', no_hp ='%d', profil_pic ='%s', users_id ='%d' where biodata_id = %s",
 		table,
 		Biodata_diri.Biodata_id,
 		Biodata_diri.Nama,
