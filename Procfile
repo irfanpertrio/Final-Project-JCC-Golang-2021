@@ -1,1 +1,1 @@
-web: bin/api-mysql
+web: api-mysql

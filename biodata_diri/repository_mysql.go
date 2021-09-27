@@ -1,4 +1,4 @@
-package Biodata_diri
+package biodata_diri
 
 import (
 	"api-mysql/config"

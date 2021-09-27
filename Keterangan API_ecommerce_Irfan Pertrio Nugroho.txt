@@ -1,0 +1,75 @@
+===AUTH===
+ID : pengguna
+PASS : sayhai
+
+===USERS===
+
+GET https://backendexample.sanbersy.com/api/user
+
+POST https://backendexample.sanbersy.com/api/user/create
+
+PUT https://backendexample.sanbersy.com/api/user/:id/update
+
+DELETE https://backendexample.sanbersy.com/api/user/:id/delete
+
+==detail data user==
+
+User_id  :int    
+Username :string 
+Password :string
+Role     :string 
+
+==PEMBAYARAN===
+
+GET https://backendexample.sanbersy.com/api/pembayaran
+
+POST https://backendexample.sanbersy.com/api/pembayaran/create
+
+PUT https://backendexample.sanbersy.com/api/pembayaran/:id/update
+
+DELETE https://backendexample.sanbersy.com/api/pembayaran/:id/delete
+
+==detail data pembayaran==
+
+Pembayaran_id	:int    
+Kartu_kredit	:int 
+Kredivo		:int 
+Debit		:int 
+Users_id	:int 
+
+===PESANAN===
+
+GET https://backendexample.sanbersy.com/api/pesanan
+
+POST https://backendexample.sanbersy.com/api/pesanan/create
+
+PUT https://backendexample.sanbersy.com/api/pesanan/:id/update
+
+DELETE https://backendexample.sanbersy.com/api/pesanan/:id/delete
+
+==detail data pesanan==
+
+Id_barang	:int  
+Jumlah_barang	:int
+Alamat_id	:int
+Keranjang_id	:int
+
+
+===KERANJANG===
+
+GET https://backendexample.sanbersy.com/api/keranjang
+
+POST https://backendexample.sanbersy.com/api/keranjang/create
+
+PUT https://backendexample.sanbersy.com/api/keranjang/:id/update
+
+DELETE https://backendexample.sanbersy.com/api/keranjang/:id/delete
+
+==detail data keranjang==
+
+Keranjang_id:int    
+Nama_barang:int 
+Jumlah_barang:int 
+Id_barang:int 
+Catatan_pemesan:string 
+Users_id:int

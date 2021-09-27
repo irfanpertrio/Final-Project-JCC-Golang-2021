@@ -1,6 +1,8 @@
 package main
 
 import (
+	"api-mysql/biodata_diri"
+	Biodata_diri "api-mysql/biodata_diri"
 	"api-mysql/models"
 	"api-mysql/utils"
 	"context"
@@ -22,40 +24,40 @@ func main() {
 
 	router := httprouter.New()
 
-	router.GET("/users", Basic_auth(GetUsers))
-	router.POST("/users/create", PostUsers)
-	router.PUT("/users/:id/update", UpdateUsers)
-	router.DELETE("/users/:id/delete", Basic_auth(DeleteUsers))
+	// router.GET("/users", Basic_auth(GetUsers))
+	// router.POST("/users/create", PostUsers)
+	// router.PUT("/users/:id/update", UpdateUsers)
+	// router.DELETE("/users/:id/delete", Basic_auth(DeleteUsers))
 
-	router.GET("/pembayaran", Basic_auth(GetPembayaran))
-	router.POST("/pembayaran/create", Basic_auth(PostPembayaran))
-	router.PUT("/pembayaran/:id/update", Basic_auth(UpdatePembayaran))
-	router.DELETE("/pembayaran/:id/delete", Basic_auth(DeletePembayaran))
+	// router.GET("/pembayaran", Basic_auth(GetPembayaran))
+	// router.POST("/pembayaran/create", Basic_auth(PostPembayaran))
+	// router.PUT("/pembayaran/:id/update", Basic_auth(UpdatePembayaran))
+	// router.DELETE("/pembayaran/:id/delete", Basic_auth(DeletePembayaran))
 
-	router.GET("/pesanan",Basic_auth(GetPesanan))
-	router.POST("/pesanan/create", Basic_auth(PostPesanan))
-	router.PUT("/pesanan/:id/update", Basic_auth(UpdatePesanan))
-	router.DELETE("/pesanan/:id/delete", Basic_auth(DeletePesanan))
+	// router.GET("/pesanan", Basic_auth(GetPesanan))
+	// router.POST("/pesanan/create", Basic_auth(PostPesanan))
+	// router.PUT("/pesanan/:id/update", Basic_auth(UpdatePesanan))
+	// router.DELETE("/pesanan/:id/delete", Basic_auth(DeletePesanan))
 
-	router.GET("/keranjang", Basic_auth(GetKeranjang))
-	router.POST("/keranjang/create", Basic_auth(PostKeranjang))
-	router.PUT("/keranjang/:id/update", Basic_auth(UpdateKeranjang))
-	router.DELETE("/keranjang/:id/delete", Basic_auth(DeleteKeranjang))
+	// router.GET("/keranjang", Basic_auth(GetKeranjang))
+	// router.POST("/keranjang/create", Basic_auth(PostKeranjang))
+	// router.PUT("/keranjang/:id/update", Basic_auth(UpdateKeranjang))
+	// router.DELETE("/keranjang/:id/delete", Basic_auth(DeleteKeranjang))
 
 	router.GET("/biodata_diri", Basic_auth(GetBiodata_diri))
 	router.POST("/biodata_diri/create", Basic_auth(PostBiodata_diri))
 	router.PUT("/biodata_diri/:id/update", Basic_auth(UpdateBiodata_diri))
 	router.DELETE("/biodata_diri/:id/delete", Basic_auth(DeleteBiodata_diri))
 
-	router.GET("/daftar_alamat", Basic_auth(GetDaftar_alamat))
-	router.POST("/daftar_alamat/create", Basic_auth(PostDaftar_alamat))
-	router.PUT("/daftar_alamat/:id/update", Basic_auth(UpdateDaftar_alamat))
-	router.DELETE("/daftar_alamat/:id/delete", Basic_auth(DeleteDaftar_alamat))
+	// router.GET("/daftar_alamat", Basic_auth(GetDaftar_alamat))
+	// router.POST("/daftar_alamat/create", Basic_auth(PostDaftar_alamat))
+	// router.PUT("/daftar_alamat/:id/update", Basic_auth(UpdateDaftar_alamat))
+	// router.DELETE("/daftar_alamat/:id/delete", Basic_auth(DeleteDaftar_alamat))
 
-	router.GET("/ulasan", Basic_auth(GetUlasan))
-	router.POST("/ulasan/create", Basic_auth(PostUlasan))
-	router.PUT("/ulasan/:id/update", Basic_auth(UpdateUlasan))
-	router.DELETE("/ulasan/:id/delete", Basic_auth(DeleteUlasan))
+	// router.GET("/ulasan", Basic_auth(GetUlasan))
+	// router.POST("/ulasan/create", Basic_auth(PostUlasan))
+	// router.PUT("/ulasan/:id/update", Basic_auth(UpdateUlasan))
+	// router.DELETE("/ulasan/:id/delete", Basic_auth(DeleteUlasan))
 
 	// untuk menampilkan file html di folder public
 	router.NotFound = http.FileServer(http.Dir("public"))
@@ -88,7 +90,7 @@ func GetBiodata_diri(w http.ResponseWriter, _ *http.Request, _ httprouter.Params
 
 	defer cancel()
 
-	Biodata_diris, err := Biodata_diri.GetAll(ctx)
+	Biodata_diris, err := biodata_diri.GetAll(ctx)
 
 	if err != nil {
 		fmt.Println(err)
@@ -181,4 +183,6 @@ func DeleteBiodata_diri(w http.ResponseWriter, _ *http.Request, ps httprouter.Pa
 	}
 
 	utils.ResponseJSON(w, res, http.StatusOK)
+}
+
 ////////////////////////////////////////////////////////////////////
