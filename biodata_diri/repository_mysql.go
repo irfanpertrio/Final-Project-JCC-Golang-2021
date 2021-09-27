@@ -26,7 +26,7 @@ func GetAll(ctx context.Context) ([]models.Biodata_diri, error) {
 		log.Fatal("Cant connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("SELECT * FROM %v Order By biodata_diri_id DESC", table)
+	queryText := fmt.Sprintf("SELECT * FROM %v Order By biodata_id DESC", table)
 
 	rowQuery, err := db.QueryContext(ctx, queryText)
 
@@ -90,7 +90,7 @@ func Update(ctx context.Context, Biodata_diri models.Biodata_diri, id string) er
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("UPDATE %v set biodata_diri_id ='%d', nama ='%s', tanggal_lahir ='%s', jenis_kelamin ='%s', email ='%s', no_hp ='%d', profil_pic ='%s', users_id ='%d' where biodata_diri_id = %s",
+	queryText := fmt.Sprintf("UPDATE %v set biodata_id ='%d', nama ='%s', tanggal_lahir ='%s', jenis_kelamin ='%s', email ='%s', no_hp ='%d', profil_pic ='%s', users_id ='%d' where biodata_diri_id = %s",
 		table,
 		Biodata_diri.Biodata_id,
 		Biodata_diri.Nama,
@@ -122,7 +122,7 @@ func Delete(ctx context.Context, id string) error {
 		log.Fatal("Can't connect to MySQL", err)
 	}
 
-	queryText := fmt.Sprintf("DELETE FROM %v where biodata_diri_id = %s", table, id)
+	queryText := fmt.Sprintf("DELETE FROM %v where biodata_id = %s", table, id)
 
 	s, err := db.ExecContext(ctx, queryText)
 
