@@ -11,7 +11,7 @@ import (
 const (
 	localUsername string = "root"
 	localPassword string = "password"
-	localDatabase string = "db_movie"
+	localDatabase string = "db_ecommerce"
 )
 
 // HubToMySQL
