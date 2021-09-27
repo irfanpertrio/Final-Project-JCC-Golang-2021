@@ -63,14 +63,14 @@ func Insert(ctx context.Context, Biodata_diri models.Biodata_diri) error {
 	}
 
 	queryText := fmt.Sprintf("INSERT INTO %v (biodata_id, nama, tanggal_lahir, jenis_kelamin, email, no_hp, profil_pic, users_id) values('%v','%v','%v','%v','%v','%v','%v','%v')", table,
-		&Biodata_diri.Biodata_id,
-		&Biodata_diri.Nama,
-		&Biodata_diri.Tanggal_lahir,
-		&Biodata_diri.Jenis_kelamin,
-		&Biodata_diri.Email,
-		&Biodata_diri.No_hp,
-		&Biodata_diri.Profil_pic,
-		&Biodata_diri.Users_id,
+		Biodata_diri.Biodata_id,
+		Biodata_diri.Nama,
+		Biodata_diri.Tanggal_lahir,
+		Biodata_diri.Jenis_kelamin,
+		Biodata_diri.Email,
+		Biodata_diri.No_hp,
+		Biodata_diri.Profil_pic,
+		Biodata_diri.Users_id,
 	)
 
 	_, err = db.ExecContext(ctx, queryText)
